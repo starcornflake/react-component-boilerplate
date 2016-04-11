@@ -1,0 +1,61 @@
+.SidebarLayout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.SidebarLayout__sidebar {
+  background-color: white;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100%;
+  width: $sidebar-width;
+  overflow-y: auto;
+  border-left: 1px solid black;
+  will-change: transform;
+  transform: translateX(0%);
+  transition: transform .3s ease-out;
+
+  &--active {
+    transform: translateX(-100%);
+  }
+}
+
+
+.SidebarLayout__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+  transition: right .3s ease-out;
+  
+  &--sidebar-active {
+    right: $sidebar-width;
+  }
+}
+
+.SidebarLayout__overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease-out,
+              visibility 0s ease-out .3s;
+  background-color: rgba(0,0,0,.3);
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
