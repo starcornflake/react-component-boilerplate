@@ -1,0 +1,64 @@
+@import "../variables";
+@import "../mixins";
+
+.SidebarLayout {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.SidebarLayout__sidebar {
+  background-color: blue;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 256px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 2;
+  transform: translateX(-256px);
+  transition-property: transform;
+  @include material-animation-default();
+
+  &--is-visible {
+    transform: translateX(0%);
+  }
+}
+
+.SidebarLayout__overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  visibility: hidden;
+  transition-property: visibility, background-color;
+  @include material-animation-default();
+
+  &--is-visible {
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: visible;
+  }
+}
+
+.SidebarLayout__page {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition-property: left;
+  @include material-animation-default();
+
+  &--is-docked {
+    left: 256px;
+  }
+}
+// .SidebarLayout__page--is-docked {
+//   left: 256px;
+//   right: 0;
+// }

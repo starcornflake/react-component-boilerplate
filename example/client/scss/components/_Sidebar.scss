@@ -1,0 +1,14 @@
+@import "../variables";
+@import "../mixins";
+
+.Sidebar {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+}
+
+.Sidebar__title {
+  background-color: purple;
+  line-height: 64px;
+  // height: 64px;
+}

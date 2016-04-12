@@ -1,75 +1,64 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
 
+import SidebarLayout from '../../../src'
+import Sidebar from '../components/Sidebar'
+import Header from '../components/Header'
+
+const propTypes = {
+
+}
+
+const defaultProps = {
+  isVisible: false,
+  isDocked: false,
+}
+
 class App extends Component {
   constructor(props) {
     super(props)
 
+    const { isVisible } = props
+
     this.state = {
-      docked: true,
-      open: true,
+      isVisible: isVisible,
     }
 
-    this.onSetOpen = this.onSetOpen.bind(this)
-    this.onMenuButtonClick = this.onMenuButtonClick.bind(this)
+    this.toggleSidebar = this.toggleSidebar.bind(this)
   }
 
-  onSetOpen(open) {
-    this.setState({ open: open })
-  }
-
-  onMenuButtonClick(e) {
-    e.preventDefault()
-    this.onSetOpen(!this.state.open)
+  toggleSidebar() {
+    this.setState({
+      isVisible: !this.state.isVisible,
+    })
   }
 
   render() {
-    const sidebarProps = {
-      sidebar: <div>yoooooooooooooooooooooooooooooooooooooo</div>,
-      open: this.state.open,
-      onSetOpen: this.onSetOpen,
-    }
+    const { isDocked } = this.props
 
-    const navBarProps = {
-      logoPath: '/public/assets/twitch-logo.png',
-      linkTitles: ['Browse', 'Turbo'],
-      linkUrls: ['/#/browse', '/#/turbo'],
-      iconNames: [],
-      iconPaths: [],
+    const sidebarProps = {
+      sidebar: <Sidebar />,
+      isDocked: isDocked,
+      isVisible: this.state.isVisible,
+      toggleSidebar: this.toggleSidebar,
+    }
+    const headerProps = {
+      toggleSidebar: this.toggleSidebar,
     }
 
     return (
-
-      <div className="mdl-layout">
-        <header className="mdl-layout__header">
-          <div className="mdl-layout-title">Title</div>
-          <div className="mdl-layout-spacer"></div>
-          <nav className="mdl-navigation mdl-layout--large-screen-only">
-            <a className="mdl-navigation__link" href="">Link</a>
-            <a className="mdl-navigation__link" href="">Link</a>
-            <a className="mdl-navigation__link" href="">Link</a>
-            <a className="mdl-navigation__link" href="">Link</a>
-          </nav>
-        </header>
-        {/*<div className="mdl-layout__drawer">
-          <span className="mdl-layout-title">Title</span>
-          <nav className="mdl-navigation">
-            <a className="mdl-navigation__link" href="">Link</a>
-            <a className="mdl-navigation__link" href="">Link</a>
-            <a className="mdl-navigation__link" href="">Link</a>
-            <a className="mdl-navigation__link" href="">Link</a>
-          </nav>
-        </div>
-        <main className="mdl-layout__content">
-          <div className="page-content">Content</div>
-        </main>*/}
-        <div>woah</div>
-      </div>
-
+      <SidebarLayout {...sidebarProps}>
+        <Header {...headerProps} />
+        hello
+        {/*<Content></Content>
+        <Footer></Footer>*/}
+      </SidebarLayout>
     )
       // <div type="button" className="btn btn-primary">woah!!</div>
   }
 }
+
+App.defaultProps = defaultProps
 
 export default App
 
