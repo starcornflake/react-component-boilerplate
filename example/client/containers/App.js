@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import SidebarLayout from '../../../src'
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header'
+import Content from '../components/Content'
 
 const propTypes = {
 
@@ -49,12 +50,10 @@ class App extends Component {
     return (
       <SidebarLayout {...sidebarProps}>
         <Header {...headerProps} />
-        hello
-        {/*<Content></Content>
-        <Footer></Footer>*/}
+        <Content />
+        <div>footer</div>
       </SidebarLayout>
     )
-      // <div type="button" className="btn btn-primary">woah!!</div>
   }
 }
 

@@ -13,7 +13,7 @@
 }
 
 .SidebarLayout__sidebar {
-  background-color: blue;
+  background-color: white;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -48,7 +48,11 @@
 }
 
 .SidebarLayout__page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   position: absolute;
+  // flex-grow: 1;
   left: 0;
   right: 0;
   transition-property: left;

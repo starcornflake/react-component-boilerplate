@@ -8,7 +8,17 @@
 }
 
 .Sidebar__title {
-  background-color: purple;
   line-height: 64px;
   // height: 64px;
+}
+
+.Sidebar__navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.Sidebar__navigation-item {
+  color: black;
+  padding: 16px 0;
+  text-decoration: none;
 }
